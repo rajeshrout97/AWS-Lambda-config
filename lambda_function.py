@@ -11,14 +11,14 @@ from io import StringIO
 def lambda_handler(event, context):
     s3_file_key = event['Records'][0]['s3']['object']['key'];
     bucket = 'staticfilesott';
-    s3 = boto3.client('s3', aws_access_key_id='AKIAVRBYUIFU5V2E7M7I',  aws_secret_access_key='mSLpcRwYw+sttWdy3jpNjKK66du7GVhZiMWv/bE2')
+    s3 = boto3.client('s3', aws_access_key_id='YOUR ACCESS KEY ID',  aws_secret_access_key='YOUR SECRET KEY')
     obj = s3.get_object(Bucket=bucket, Key=s3_file_key)
     initial_df = pd.read_csv(io.BytesIO(obj['Body'].read()));
 
     service_name = 's3'
     region_name = 'ap-south-1'
-    aws_access_key_id = 'AKIAVRBYUIFU5V2E7M7I'
-    aws_secret_access_key = 'mSLpcRwYw+sttWdy3jpNjKK66du7GVhZiMWv/bE2'
+    aws_access_key_id = 'YOUR ACCESS KEY ID'
+    aws_secret_access_key = 'YOUR SECRET KEY'
     s3_resource = boto3.resource(
         service_name=service_name,
         region_name=region_name,
